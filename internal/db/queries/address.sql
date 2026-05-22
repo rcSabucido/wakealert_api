@@ -13,9 +13,10 @@ SELECT * FROM municipal_or_city WHERE province_or_huc_psgc = $1 ORDER BY city_mu
 -- name: GetBarangaysByMunicipalOrCity :many
 SELECT * FROM barangays WHERE city_mun_psgc = $1 ORDER BY barangay_name;
 
--- name: CreateAddressLine :one-- name: GetAddressLine :one
+-- name: GetAddressLine :one
 SELECT * FROM address_line WHERE address_id = $1;
 
+-- name: CreateAddressLine :one
 INSERT INTO address_line (barangay_psgc, address_line)
 VALUES ($1, $2)
 RETURNING *;
