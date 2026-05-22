@@ -1,0 +1,1 @@
+ALTER TABLE victim ALTER COLUMN address_id SET NOT NULL;    

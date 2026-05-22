@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: pg-local
+    environment:
+      POSTGRES_USER: devuser
+      POSTGRES_PASSWORD: devpass
+      POSTGRES_DB: wakealert_api
+    ports:
+      - "5432:5432"
+    volumes:
+    - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U devuser -d wakealert_api"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+

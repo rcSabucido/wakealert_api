@@ -1,0 +1,16 @@
+DROP TABLE IF EXISTS medical_history_entry;
+DROP TABLE IF EXISTS alert;
+DROP TABLE IF EXISTS contact;
+DROP TABLE IF EXISTS victim;
+DROP TABLE IF EXISTS medical_information;
+DROP TABLE IF EXISTS address_line;
+DROP TABLE IF EXISTS barangay;
+DROP TABLE IF EXISTS district;
+DROP TABLE IF EXISTS city;
+DROP TABLE IF EXISTS province;
+DROP TABLE IF EXISTS blood_type;
+DROP TABLE IF EXISTS organ_donor_status;
+DROP TABLE IF EXISTS pregnancy_status;
+DROP TABLE IF EXISTS relationship_type;
+DROP TABLE IF EXISTS receiver_user;
+DROP TABLE IF EXISTS mobile_user;
