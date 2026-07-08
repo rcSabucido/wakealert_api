@@ -1,6 +1,7 @@
 package main
 
 import (
+	"os"
 	"log"
 	"net/http"
 
@@ -10,7 +11,8 @@ import (
 
 func enableCORS(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("Access-Control-Allow-Origin", os.Getenv("CORS_ORIGIN"))
+		//w.Header().Set("Access-Control-Allow-Origin", "*")
 		w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 		w.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization")
 
@@ -27,6 +29,7 @@ func main() {
 	_ = godotenv.Load()
 
 	mux := http.NewServeMux()
+	mux.HandleFunc("/alerts_broadcast", handlers.HandleWS)
 	mux.HandleFunc("POST /auth/login", handlers.Login)
 	mux.HandleFunc("POST /mobile_users", handlers.CreateMobileUser)
 	mux.HandleFunc("GET /mobile_users/{id}", handlers.GetMobileUser)
